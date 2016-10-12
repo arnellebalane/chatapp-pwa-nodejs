@@ -46,8 +46,8 @@ function login(user) {
     .then(response => response.json())
     .then(response => {
         jwtoken = response.jwtoken;
-        localStorage.setItem('jwtoken', jwtoken);
         authenticated = true;
+        localStorage.setItem('jwtoken', jwtoken);
         return jwtoken;
     });
 }
@@ -60,5 +60,10 @@ function login(user) {
 function logout() {
     if (!gapi) return null;
     return gapi.auth2.getAuthInstance().signOut()
+        .then(_ => {
+            jwtoken = null;
+            authenticated = false;
+            localStorage.removeItem('jwtoken');
+        })
         .then(_ => $('.signin').addClass('signin--shown'));
 }

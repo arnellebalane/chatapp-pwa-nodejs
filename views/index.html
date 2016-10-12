@@ -4,14 +4,20 @@
         <title>ChatApp | Progressive Web App</title>
 
         <meta charset="utf-8">
+        <meta name="google-signin-client_id" content="568209988434-vnc97ibn1tahcn3f2nn9qkok4rotcqfo.apps.googleusercontent.com">
 
         <link rel="stylesheet" href="/static/stylesheets/chatapp.css">
     </head>
 
     <body>
-        <h1>ChatApp | Progressive Web App</h1>
+        <main id="container"></main>
+
+        <template id="login-page">
+            <button class="g-signin2" data-onsuccess="onsignin"></button>
+        </template>
 
         <script src="/static/vendor/jquery/dist/jquery.min.js"></script>
         <script src="/static/javascripts/chatapp.js"></script>
+        <script src="/static/javascripts/authentication.js"></script>
     </body>
 </html>

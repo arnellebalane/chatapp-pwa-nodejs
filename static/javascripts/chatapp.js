@@ -16,4 +16,11 @@ idbKeyval.get('jwtoken').then(value => {
 
 const userAuthenticated = once(_ => {
     console.log(jwtoken, authenticated, currentUser);
+    $('.messages-layer').addClass('layer--shown');
 });
+
+
+const userDeauthenticated = _ => {
+    userAuthenticated.called = false;
+    $('.messages-layer').removeClass('layer--shown');
+};

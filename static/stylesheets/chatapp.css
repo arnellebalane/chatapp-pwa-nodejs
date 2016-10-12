@@ -56,3 +56,11 @@ body {
     font-size: 24px;
     color: #fff;
 }
+
+
+
+/** messages layer styles **/
+
+.messages-layer {
+    background-color: #ffc107;
+}

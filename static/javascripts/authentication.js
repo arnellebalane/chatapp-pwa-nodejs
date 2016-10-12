@@ -68,7 +68,7 @@ function logout() {
             jwtoken = undefined;
             authenticated = false;
             currentUser = undefined;
-            userAuthenticated.called = false;
+            userDeauthenticated();
             return Promise.all([
                 idbKeyval.delete('jwtoken'),
                 idbKeyval.delete('currentuser')

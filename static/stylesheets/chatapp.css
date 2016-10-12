@@ -16,30 +16,37 @@ body {
 
 
 
-/** signin layer styles **/
+/** generic layer styles **/
 
-.signin {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.layer {
     padding: 25px;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    text-align: center;
-    background-color: #2196f3;
-    pointer-events: none;
     opacity: 0;
+    pointer-events: none;
     transition: opacity 500ms ease;
 }
 
 
-.signin--shown {
+.layer--shown {
     pointer-events: auto;
     opacity: 1;
+}
+
+
+
+/** signin layer styles **/
+
+.signin-layer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #2196f3;
 }
 
 

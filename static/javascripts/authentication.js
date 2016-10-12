@@ -1,6 +1,6 @@
 idbKeyval.get('jwtoken').then(value => {
     if (value === undefined) {
-        requestAnimationFrame(_ => $('.signin').addClass('signin--shown'));
+        requestAnimationFrame(_ => $('.signin-layer').addClass('layer--shown'));
     }
 });
 
@@ -26,7 +26,7 @@ function onsignin(googleUser) {
         avatar: profile.getImageUrl()
     };
     login(user)
-        .then(_ => $('.signin').removeClass('signin--shown'))
+        .then(_ => $('.signin-layer').removeClass('layer--shown'))
         .then(userAuthenticated);
 }
 
@@ -74,5 +74,5 @@ function logout() {
                 idbKeyval.delete('currentuser')
             ]);
         })
-        .then(_ => $('.signin').addClass('signin--shown'));
+        .then(_ => $('.signin-layer').addClass('layer--shown'));
 }

@@ -1,15 +1,16 @@
 // `authenticated` variable is defined in `chatapp.js` file
 if (!authenticated) {
     requestAnimationFrame(_ => $('.signin').addClass('signin--shown'));
-
-    // dynamically load the Google platform library
-    const script = document.createElement('script');
-    script.src = 'https://apis.google.com/js/platform.js';
-    script.async = true;
-    script.defer = true;
-    script.onerror = error => console.warn(error);
-    document.body.appendChild(script);
 }
+
+
+// dynamically load the Google platform library
+const script = document.createElement('script');
+script.src = 'https://apis.google.com/js/platform.js';
+script.async = true;
+script.defer = true;
+script.onerror = error => console.warn(error);
+document.body.appendChild(script);
 
 
 /**
@@ -52,6 +53,10 @@ function login(user) {
 }
 
 
+/**
+ *  Logs out the current user session, deleting the JSON Web Token stored in
+ *  the browser's LocalStorage.
+ **/
 function logout() {
     if (!gapi) return null;
     return gapi.auth2.getAuthInstance().signOut()

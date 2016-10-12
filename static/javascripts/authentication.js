@@ -45,7 +45,7 @@ if (!authenticated) {
     function logout() {
         if (!gapi) return null;
         return gapi.auth2.getAuthInstance().signOut()
-            .then($('.signin').addClass('signin--shown'));
+            .then(_ => $('.signin').addClass('signin--shown'));
     }
 
 }

@@ -1,11 +1,16 @@
-let jwtoken = localStorage.getItem('jwtoken');
-let authenticated = jwtoken !== null;
-
-if (authenticated) {
-    userAuthenticated();
-}
+let jwtoken, authenticated;
 
 
-function userAuthenticated() {
-    console.log(localStorage.getItem('jwtoken'), authenticated);
-}
+idbKeyval.get('jwtoken').then(value => {
+    jwtoken = value;
+    authenticated = jwtoken !== undefined;
+
+    if (authenticated) {
+        userAuthenticated();
+    }
+});
+
+
+const userAuthenticated = once(_ => {
+    console.log(jwtoken, authenticated);
+});

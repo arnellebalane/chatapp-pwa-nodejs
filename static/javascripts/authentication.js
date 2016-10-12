@@ -1,7 +1,8 @@
-// `authenticated` variable is defined in `chatapp.js` file
-if (!authenticated) {
-    requestAnimationFrame(_ => $('.signin').addClass('signin--shown'));
-}
+idbKeyval.get('jwtoken').then(value => {
+    if (value === undefined) {
+        requestAnimationFrame(_ => $('.signin').addClass('signin--shown'));
+    }
+});
 
 
 // dynamically load the Google platform library
@@ -32,7 +33,7 @@ function onsignin(googleUser) {
 
 /**
  *  Send user information to server in exchange for a JSON Web Token which will
- *  then be stored in LocalStorage and used in the `Authentication` header for
+ *  then be stored in IndexedDB and used in the `Authentication` header for
  *  future server requests.
  **/
 function login(user) {
@@ -47,23 +48,23 @@ function login(user) {
     .then(response => {
         jwtoken = response.jwtoken;
         authenticated = true;
-        localStorage.setItem('jwtoken', jwtoken);
-        return jwtoken;
+        return idbKeyval.set('jwtoken', jwtoken);
     });
 }
 
 
 /**
  *  Logs out the current user session, deleting the JSON Web Token stored in
- *  the browser's LocalStorage.
+ *  the browser's IndexedDB.
  **/
 function logout() {
     if (!gapi) return null;
     return gapi.auth2.getAuthInstance().signOut()
         .then(_ => {
-            jwtoken = null;
+            jwtoken = undefined;
             authenticated = false;
-            localStorage.removeItem('jwtoken');
+            userAuthenticated.called = false;
+            return idbKeyval.delete('jwtoken');
         })
         .then(_ => $('.signin').addClass('signin--shown'));
 }

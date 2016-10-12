@@ -20,6 +20,7 @@ function onsignin(googleUser) {
     const profile = googleUser.getBasicProfile();
     const user = {
         name: profile.getName(),
+        email: profile.getEmail(),
         avatar: profile.getImageUrl()
     };
     login(user)

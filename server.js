@@ -10,7 +10,7 @@ const app = express();
 app.use(morgan('dev'));
 app.use(bodyparser.json());
 
-app.use(require('./routes'));
+app.use(require('./lib/routes'));
 
 app.engine('html', consolidate.nunjucks);
 app.set('views', `${__dirname}/views`);

@@ -6,15 +6,17 @@
         <meta charset="utf-8">
         <meta name="google-signin-client_id" content="568209988434-vnc97ibn1tahcn3f2nn9qkok4rotcqfo.apps.googleusercontent.com">
 
+        <link rel="stylesheet" href="/static/stylesheets/fonts.css">
         <link rel="stylesheet" href="/static/stylesheets/chatapp.css">
     </head>
 
     <body>
-        <main id="container"></main>
+        <div id="chatapp"></div>
 
-        <template id="login-page">
-            <button class="g-signin2" data-onsuccess="onsignin"></button>
-        </template>
+        <div class="signin">
+            <p class="signin__text">You need to sign in to use this application.</p>
+            <div class="g-signin2 signin__button" data-width="200" data-longtitle="true" data-onsuccess="onsignin"></div>
+        </div>
 
         <script src="/static/vendor/jquery/dist/jquery.min.js"></script>
         <script src="/static/javascripts/chatapp.js"></script>

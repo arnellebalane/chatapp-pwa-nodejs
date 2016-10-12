@@ -1,8 +1,7 @@
 // `authenticated` variable is defined in `chatapp.js` file
 if (!authenticated) {
 
-    const loginPage = $('template#login-page').html();
-    $('#container').append(loginPage);
+    requestAnimationFrame(_ => $('.signin').addClass('signin--shown'));
 
     // dynamically load the Google platform library
     const script = document.createElement('script');
@@ -19,7 +18,9 @@ if (!authenticated) {
             name: profile.getName(),
             avatar: profile.getImageUrl()
         };
-        login(user).then(userAuthenticated);
+        login(user)
+            .then(_ => $('.signin').removeClass('signin--shown'))
+            .then(userAuthenticated);
     }
 
 

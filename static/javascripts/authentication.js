@@ -48,7 +48,11 @@ function login(user) {
     .then(response => {
         jwtoken = response.jwtoken;
         authenticated = true;
-        return idbKeyval.set('jwtoken', jwtoken);
+        currentUser = user;
+        return Promise.all([
+            idbKeyval.set('jwtoken', jwtoken),
+            idbKeyval.set('currentuser', user)
+        ]);
     });
 }
 
@@ -63,8 +67,12 @@ function logout() {
         .then(_ => {
             jwtoken = undefined;
             authenticated = false;
+            currentUser = undefined;
             userAuthenticated.called = false;
-            return idbKeyval.delete('jwtoken');
+            return Promise.all([
+                idbKeyval.delete('jwtoken'),
+                idbKeyval.delete('currentuser')
+            ]);
         })
         .then(_ => $('.signin').addClass('signin--shown'));
 }

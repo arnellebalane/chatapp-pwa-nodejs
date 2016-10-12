@@ -1,4 +1,4 @@
-let jwtoken, authenticated;
+let jwtoken, authenticated, currentUser;
 
 
 idbKeyval.get('jwtoken').then(value => {
@@ -6,11 +6,14 @@ idbKeyval.get('jwtoken').then(value => {
     authenticated = jwtoken !== undefined;
 
     if (authenticated) {
-        userAuthenticated();
+        idbKeyval.get('currentuser').then(value => {
+            currentUser = value;
+            userAuthenticated();
+        });
     }
 });
 
 
 const userAuthenticated = once(_ => {
-    console.log(jwtoken, authenticated);
+    console.log(jwtoken, authenticated, currentUser);
 });

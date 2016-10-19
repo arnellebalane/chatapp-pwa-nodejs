@@ -23,3 +23,37 @@
     background-color: #ffd54f;
     box-shadow: 0 5px 11px rgba(0, 0, 0, 0.18), 0 4px 15px rgba(0, 0, 0, 0.15);
 }
+
+
+.button--loading {
+    position: relative;
+    color: transparent;
+    background-color: #ffd54f;
+    pointer-events: none;
+    user-select: none;
+}
+
+.button--loading::after {
+    content: "";
+    display: block;
+    width: 1.2em;
+    height: 1.2em;
+    border: 3px solid #222;
+    border-top-color: transparent;
+    border-radius: 50%;
+    position: absolute;
+    top: calc(50% - 0.6em);
+    left: calc(50% - 0.6em);
+    animation: rotate 1s linear infinite;
+}
+
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

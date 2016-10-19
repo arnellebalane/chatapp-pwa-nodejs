@@ -7,13 +7,20 @@
         <meta name="google-signin-client_id" content="568209988434-vnc97ibn1tahcn3f2nn9qkok4rotcqfo.apps.googleusercontent.com">
 
         <link rel="stylesheet" href="/static/stylesheets/fonts.css">
+        <link rel="stylesheet" href="/static/stylesheets/components.css">
         <link rel="stylesheet" href="/static/stylesheets/chatapp.css">
     </head>
 
     <body>
         <div class="layer messages-layer">
-            <form action="/message" method="post" class="message-form">
-                <input type="text" name="message">
+            <form class="message-form" action="/message" method="post">
+                <label class="message-form__text">Write something to everyone:</label>
+                <input class="message-form__input" type="text" name="message" autocomplete="off" spellcheck="false">
+
+                <div class="message-form__actions">
+                    <button class="button">Send Message</button>
+                    <button class="button" type="button">Subscribe to Push Notifications</button>
+                </div>
             </form>
         </div>
 

@@ -12,7 +12,16 @@ body {
     border: 1px solid transparent;
     font-family: "Quicksand";
     font-size: 16px;
+    color: #fff;
     background: linear-gradient(-45deg, #42275a , #734b6d);
+}
+
+
+a,
+input,
+button {
+    font: inherit;
+    color: inherit;
 }
 
 
@@ -54,7 +63,6 @@ body {
     max-width: 350px;
     margin-bottom: 50px;
     font-size: 24px;
-    color: #fff;
 }
 
 
@@ -63,4 +71,54 @@ body {
         max-width: 450px;
         font-size: 32px;
     }
+}
+
+
+
+/** message form styles **/
+
+.messages-layer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.message-form {
+    width: 80vw;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+.message-form__text {
+    display: block;
+    margin-bottom: 50px;
+    font-size: 24px;
+}
+
+
+.message-form__input {
+    width: 100%;
+    padding: 0.5em 1em;
+    border: none;
+    border-bottom: 1px solid #bdbdbd;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    background: none;
+    outline: none;
+    box-shadow: none;
+    transition: box-shadow 150ms ease;
+}
+
+.message-form__input:focus {
+    border-bottom-color: #ffc107;
+    box-shadow: 0 1px 0 0 #ffc107;
+}
+
+
+.message-form__actions {
+    margin-top: 25px;
 }

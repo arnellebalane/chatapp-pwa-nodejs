@@ -12,6 +12,7 @@ body {
     border: 1px solid transparent;
     font-family: "Quicksand";
     font-size: 16px;
+    background: linear-gradient(-45deg, #42275a , #734b6d);
 }
 
 
@@ -46,7 +47,6 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: #2196f3;
 }
 
 
@@ -58,9 +58,9 @@ body {
 }
 
 
-
-/** messages layer styles **/
-
-.messages-layer {
-    background-color: #ffc107;
+@media (min-width: 1024px) {
+    .signin__text {
+        max-width: 450px;
+        font-size: 32px;
+    }
 }

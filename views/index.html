@@ -11,7 +11,11 @@
     </head>
 
     <body>
-        <div class="layer messages-layer"></div>
+        <div class="layer messages-layer">
+            <form action="/message" method="post" class="message-form">
+                <input type="text" name="message">
+            </form>
+        </div>
 
         <div class="layer signin-layer">
             <p class="signin__text">You need to sign in to use this application.</p>

@@ -14,6 +14,21 @@ idbKeyval.get('jwtoken').then(value => {
 });
 
 
+$('.message-form').on('submit', function(e) {
+    e.preventDefault();
+
+    const message = this.message.value.trim();
+    if (message.length > 0) {
+        const url = this.action;
+        const data = { message: message };
+        postDataToServer(url, data).then(response => {
+            console.log(response);
+            this.message.value = '';
+        });
+    }
+});
+
+
 const userAuthenticated = once(_ => {
     console.log(jwtoken, authenticated, currentUser);
     $('.messages-layer').addClass('layer--shown');
@@ -23,4 +38,16 @@ const userAuthenticated = once(_ => {
 const userDeauthenticated = _ => {
     userAuthenticated.called = false;
     $('.messages-layer').removeClass('layer--shown');
+};
+
+
+const postDataToServer = (url, data) => {
+    return fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${jwtoken}`
+        },
+        body: JSON.stringify(data)
+    }).then(response => response.json());
 };

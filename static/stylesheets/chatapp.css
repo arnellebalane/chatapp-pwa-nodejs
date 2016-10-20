@@ -77,7 +77,7 @@ button {
 
 /** message form styles **/
 
-.messages-layer {
+.message-layer {
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -34,13 +34,13 @@ $('.logout-button').on('click', _ => logout());
 
 const userAuthenticated = once(_ => {
     console.log(jwtoken, authenticated, currentUser);
-    $('.messages-layer').addClass('layer--shown');
+    $('.message-layer, .messages-layer').addClass('layer--shown');
 });
 
 
 const userDeauthenticated = _ => {
     userAuthenticated.called = false;
-    $('.messages-layer').removeClass('layer--shown');
+    $('.message-layer, .messages-layer').removeClass('layer--shown');
 };
 
 

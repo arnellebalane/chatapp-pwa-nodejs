@@ -48,6 +48,52 @@ button {
 
 
 
+/** app header styles **/
+
+.app-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-shrink: 0;
+    width: 80vw;
+    padding: 50px;
+    text-align: right;
+}
+
+
+.app-header-action {
+    height: 50px;
+    padding: 0 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    line-height: 50px;
+    transition: background 300ms ease;
+    cursor: pointer;
+    outline: none;
+}
+
+.app-header-action:hover,
+.app-header-action:focus {
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+
+
+/** logout button styles **/
+
+.logout-button {
+    width: 50px;
+    height: 50px;
+    border: none;
+    margin-left: 10px;
+    font-size: 0;
+    background: url("../images/logout.png") center center no-repeat;
+    background-size: 40%;
+    border-radius: 50%;
+}
+
+
+
 /** signin layer styles **/
 
 .signin-layer {
@@ -75,7 +121,7 @@ button {
 
 
 
-/** message form styles **/
+/** message layer styles **/
 
 .message-layer {
     display: flex;
@@ -84,6 +130,14 @@ button {
     align-items: center;
 }
 
+
+.message-layer .app-header {
+    margin-bottom: -150px;
+}
+
+
+
+/** message form styles **/
 
 .message-form {
     width: 80vw;
@@ -126,46 +180,39 @@ button {
 
 
 
-/** app header styles **/
+/** messages layer styles **/
 
-.app-header {
+.messages-layer {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
     align-items: center;
+    overflow: auto;
+}
+
+
+.messages {
     width: 80vw;
-    padding: 50px;
-    margin-bottom: -150px;
-    text-align: right;
+    max-width: 600px;
+    padding-bottom: 50px;
+    list-style: none;
 }
 
 
-.app-header-action {
-    height: 50px;
-    padding: 0 25px;
-    border-radius: 50px;
-    text-decoration: none;
-    line-height: 50px;
-    transition: background 300ms ease;
-    cursor: pointer;
-    outline: none;
-}
-
-.app-header-action:hover,
-.app-header-action:focus {
-    background-color: rgba(0, 0, 0, 0.25);
+.message {
+    display: flex;
+    margin: 50px 0;
 }
 
 
-
-/** logout button styles **/
-
-.logout-button {
-    width: 50px;
-    height: 50px;
-    border: none;
-    margin-left: 10px;
-    font-size: 0;
-    background: url("../images/logout.png") center center no-repeat;
-    background-size: 40%;
+.message__avatar {
+    flex-shrink: 0;
+    width: 55px;
+    height: 55px;
+    margin-right: 25px;
     border-radius: 50%;
+}
+
+
+.message__author {
+    line-height: 55px;
 }

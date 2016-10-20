@@ -21,10 +21,7 @@ $('.message-form').on('submit', function(e) {
     if (message.length > 0) {
         const url = this.action;
         const data = { message: message };
-        postDataToServer(url, data).then(response => {
-            console.log(response);
-            this.message.value = '';
-        });
+        postDataToServer(url, data).then(response => this.message.value = '');
     }
 });
 

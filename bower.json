@@ -23,6 +23,8 @@
   "dependencies": {
     "jquery": "^3.1.1",
     "idb": "jakearchibald/idb",
-    "idb-keyval": "jakearchibald/idb-keyval"
+    "idb-keyval": "jakearchibald/idb-keyval",
+    "firebase": "^3.5.1",
+    "handlebars": "^4.0.5"
   }
 }

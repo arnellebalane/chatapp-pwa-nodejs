@@ -18,43 +18,7 @@
                 <button class="app-header-action logout-button" title="Sign Out">Sign Out</button>
             </header>
 
-            <ul class="messages">
-                <li class="message">
-                    <img src="https://lh3.googleusercontent.com/-vFIeYltkTSQ/AAAAAAAAAAI/AAAAAAAAAV4/MOumBO_eMck/s96-c/photo.jpg" alt="Arnelle Balane" class="message__avatar">
-                    <div class="message__details">
-                        <h2 class="message__author">Arnelle Balane</h2>
-                        <p class="message__content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio eaque voluptatibus iure, veritatis doloribus? Sapiente, quos. Aperiam perferendis eius eaque at aut tempore facere, doloremque placeat tempora eligendi, rerum fuga!</p>
-                    </div>
-                </li>
-                <li class="message message--outgoing">
-                    <img src="https://lh3.googleusercontent.com/-vFIeYltkTSQ/AAAAAAAAAAI/AAAAAAAAAV4/MOumBO_eMck/s96-c/photo.jpg" alt="Arnelle Balane" class="message__avatar">
-                    <div class="message__details">
-                        <h2 class="message__author">Arnelle Balane</h2>
-                        <p class="message__content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio eaque voluptatibus iure, veritatis doloribus? Sapiente, quos. Aperiam perferendis eius eaque at aut tempore facere, doloremque placeat tempora eligendi, rerum fuga!</p>
-                    </div>
-                </li>
-                <li class="message">
-                    <img src="https://lh3.googleusercontent.com/-vFIeYltkTSQ/AAAAAAAAAAI/AAAAAAAAAV4/MOumBO_eMck/s96-c/photo.jpg" alt="Arnelle Balane" class="message__avatar">
-                    <div class="message__details">
-                        <h2 class="message__author">Arnelle Balane</h2>
-                        <p class="message__content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio eaque voluptatibus iure, veritatis doloribus? Sapiente, quos. Aperiam perferendis eius eaque at aut tempore facere, doloremque placeat tempora eligendi, rerum fuga!</p>
-                    </div>
-                </li>
-                <li class="message">
-                    <img src="https://lh3.googleusercontent.com/-vFIeYltkTSQ/AAAAAAAAAAI/AAAAAAAAAV4/MOumBO_eMck/s96-c/photo.jpg" alt="Arnelle Balane" class="message__avatar">
-                    <div class="message__details">
-                        <h2 class="message__author">Arnelle Balane</h2>
-                        <p class="message__content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio eaque voluptatibus iure, veritatis doloribus? Sapiente, quos. Aperiam perferendis eius eaque at aut tempore facere, doloremque placeat tempora eligendi, rerum fuga!</p>
-                    </div>
-                </li>
-                <li class="message">
-                    <img src="https://lh3.googleusercontent.com/-vFIeYltkTSQ/AAAAAAAAAAI/AAAAAAAAAV4/MOumBO_eMck/s96-c/photo.jpg" alt="Arnelle Balane" class="message__avatar">
-                    <div class="message__details">
-                        <h2 class="message__author">Arnelle Balane</h2>
-                        <p class="message__content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio eaque voluptatibus iure, veritatis doloribus? Sapiente, quos. Aperiam perferendis eius eaque at aut tempore facere, doloremque placeat tempora eligendi, rerum fuga!</p>
-                    </div>
-                </li>
-            </ul>
+            <ul class="messages"></ul>
         </div>
 
         <div class="layer signin-layer">
@@ -62,11 +26,26 @@
             <div class="g-signin2 signin__button" data-width="200" data-longtitle="true" data-onsuccess="onsignin"></div>
         </div>
 
+        <template id="message">
+            {% raw %}
+            <li class="message {{#outgoing}}message--outgoing{{/outgoing}}">
+                <img class="message__avatar" src="{{author.avatar}}" alt="{{author.name}}">
+                <div class="message__details">
+                    <h2 class="message__author">{{author.name}}</h2>
+                    <p class="message__content">{{content}}</p>
+                </div>
+            </li>
+            {% endraw %}
+        </template>
+
         <script src="/static/vendor/jquery/dist/jquery.min.js"></script>
+        <script src="/static/vendor/handlebars/handlebars.min.js"></script>
+        <script src="/static/vendor/firebase/firebase.js"></script>
         <script src="/static/vendor/idb/lib/idb.js"></script>
         <script src="/static/vendor/idb-keyval/idb-keyval.js"></script>
         <script src="/static/javascripts/utils.js"></script>
         <script src="/static/javascripts/chatapp.js"></script>
+        <script src="/static/javascripts/messages.js"></script>
         <script src="/static/javascripts/authentication.js"></script>
     </body>
 </html>

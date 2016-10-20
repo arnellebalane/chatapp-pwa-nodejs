@@ -202,6 +202,9 @@ button {
     display: flex;
     padding-right: 200px;
     margin: 50px 0;
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 250ms ease;
 }
 
 
@@ -220,6 +223,7 @@ button {
 
 
 .message--outgoing {
+    justify-content: flex-end;
     padding-left: 200px;
     padding-right: 0;
 }
@@ -234,4 +238,10 @@ button {
 
 .message--outgoing .message__details {
     text-align: right;
+}
+
+
+.message--entering {
+    opacity: 0;
+    transform: translateY(-50%);
 }

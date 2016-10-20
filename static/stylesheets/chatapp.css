@@ -79,6 +79,7 @@ button {
 
 .messages-layer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -125,25 +126,46 @@ button {
 
 
 
+/** app header styles **/
+
+.app-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 80vw;
+    padding: 50px;
+    margin-bottom: -150px;
+    text-align: right;
+}
+
+
+.app-header-action {
+    height: 50px;
+    padding: 0 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    line-height: 50px;
+    transition: background 300ms ease;
+    cursor: pointer;
+    outline: none;
+}
+
+.app-header-action:hover,
+.app-header-action:focus {
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+
+
 /** logout button styles **/
 
 .logout-button {
     width: 50px;
     height: 50px;
     border: none;
-    position: fixed;
-    top: 50px;
-    right: 50px;
+    margin-left: 10px;
     font-size: 0;
     background: url("../images/logout.png") center center no-repeat;
     background-size: 40%;
     border-radius: 50%;
-    cursor: pointer;
-    outline: none;
-    transition: background 300ms ease;
-}
-
-.logout-button:hover,
-.logout-button:focus {
-    background-color: rgba(0, 0, 0, 0.25);
 }

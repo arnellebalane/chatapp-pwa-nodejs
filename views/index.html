@@ -13,6 +13,11 @@
 
     <body>
         <div class="layer messages-layer">
+            <header class="app-header">
+                <a class="app-header-action" href="/messages">View Messages</a>
+                <button class="app-header-action logout-button" title="Sign Out">Sign Out</button>
+            </header>
+
             <form class="message-form" action="/message" method="post">
                 <label class="message-form__text">Write something to everyone:</label>
                 <input class="message-form__input" type="text" name="message" autocomplete="off" spellcheck="false">
@@ -22,8 +27,6 @@
                     <button class="button subscribe-button" type="button">Subscribe to Push Notifications</button>
                 </div>
             </form>
-
-            <button class="logout-button" title="Sign Out">Sign Out</button>
         </div>
 
         <div class="layer signin-layer">

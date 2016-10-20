@@ -1,3 +1,4 @@
 node_modules/
 static/vendor/
 config.json
+process.json

@@ -29,6 +29,9 @@ $('.message-form').on('submit', function(e) {
 });
 
 
+$('.logout-button').on('click', _ => logout());
+
+
 const userAuthenticated = once(_ => {
     console.log(jwtoken, authenticated, currentUser);
     $('.messages-layer').addClass('layer--shown');

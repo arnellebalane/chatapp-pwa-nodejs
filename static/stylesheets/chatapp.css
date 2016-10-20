@@ -87,7 +87,7 @@ button {
 .message-form {
     width: 80vw;
     max-width: 600px;
-    margin: 0 auto;
+    margin: auto;
     text-align: center;
 }
 
@@ -121,4 +121,29 @@ button {
 
 .message-form__actions {
     margin-top: 25px;
+}
+
+
+
+/** logout button styles **/
+
+.logout-button {
+    width: 50px;
+    height: 50px;
+    border: none;
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    font-size: 0;
+    background: url("../images/logout.png") center center no-repeat;
+    background-size: 40%;
+    border-radius: 50%;
+    cursor: pointer;
+    outline: none;
+    transition: background 300ms ease;
+}
+
+.logout-button:hover,
+.logout-button:focus {
+    background-color: rgba(0, 0, 0, 0.25);
 }

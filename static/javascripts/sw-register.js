@@ -18,7 +18,8 @@ const initializeProgressiveWebApp = registration => {
             const formControls = $(this).find('input, .send-messsage-button');
             formControls.prop('disabled', true);
 
-            insertObjectToIndexedDb('messages', message)
+            const data = { message: message };
+            insertObjectToIndexedDb('messages', data)
                 .then(_ => registration.sync.register('send-message'))
                 .then(_ => {
                     this.message.value = '';

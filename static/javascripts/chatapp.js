@@ -24,10 +24,11 @@ $('.message-form').on('submit', function(e) {
 
         const url = this.action;
         const data = { message: message };
-        postDataToServer(url, data)
-            .then(response => this.message.value = '')
-            .then(_ => formControls.prop('disabled', false))
-            .then(_ => toast('Message sent!'));
+        postDataToServer(url, data).then(_ => {
+            this.message.value = '';
+            formControls.prop('disabled', false);
+            toast('Message sent!');
+        });
     }
 });
 

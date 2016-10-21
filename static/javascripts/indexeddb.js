@@ -1,13 +1,13 @@
-const indb = idb.open('chatapp-pwa', 0, upgrade => {
+const indb = idb.open('chatapp-pwa', 1, upgrade => {
     switch (upgrade.oldVersion) {
         case 0:
-            upgrade.createObjectStore('messages');
+            upgrade.createObjectStore('messages', { autoIncrement: true });
     }
 });
 
 
 
-const insertObjectToDb => (store, object) => {
+const insertObjectToIndexedDb = (store, object) => {
     return indb.then(db => {
         const transaction = db.transaction(store, 'readwrite');
         transaction.objectStore(store).put(object);

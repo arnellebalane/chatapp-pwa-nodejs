@@ -29,15 +29,26 @@ $('.message-form').on('submit', function(e) {
 $('.logout-button').on('click', _ => logout());
 
 
-const userAuthenticated = once(_ => {
+const userAuthenticatedCallbacks = [];
+const userDeauthenticatedCallbacks = [];
+
+userAuthenticatedCallbacks.push(_ => {
     console.log(jwtoken, authenticated, currentUser);
-    $('.message-layer, .messages-layer').addClass('layer--shown');
+    $('.message-layer').addClass('layer--shown');
+});
+
+userDeauthenticatedCallbacks.push(_ => {
+    userAuthenticated.called = false;
+    $('.message-layer').removeClass('layer--shown');
 });
 
 
+const userAuthenticated = once(_ => {
+    userAuthenticatedCallbacks.forEach(callback => callback());
+});
+
 const userDeauthenticated = _ => {
-    userAuthenticated.called = false;
-    $('.message-layer, .messages-layer').removeClass('layer--shown');
+    userDeauthenticatedCallbacks.forEach(callback => callback());
 };
 
 

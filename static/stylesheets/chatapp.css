@@ -217,6 +217,11 @@ button {
 }
 
 
+.message__details {
+    flex-grow: 1;
+}
+
+
 .message__author {
     line-height: 55px;
 }

@@ -13,3 +13,10 @@ const insertObjectToIndexedDb = (store, object) => {
             .objectStore(store).put(object);
     });
 };
+
+
+const retrieveObjectsFromIndexedDb = store => {
+    return indb.then(db => {
+        return db.transaction(store).objectStore(store).getAll();
+    });
+};

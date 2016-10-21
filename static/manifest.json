@@ -1,0 +1,16 @@
+{
+  "name": "Progressive Chat App",
+  "short_name": "Progressive Chat App",
+  "description": "A chat application which is also a progressive web app.",
+  "theme_color": "#42275a",
+  "background-color": "#734b6d",
+  "icons": [
+    {
+      "src": "/static/images/chatapp.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone"
+}

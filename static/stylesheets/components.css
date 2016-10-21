@@ -24,6 +24,7 @@
 }
 
 
+.button[disabled],
 .button--loading {
     position: relative;
     color: transparent;
@@ -32,6 +33,7 @@
     user-select: none;
 }
 
+.button[disabled]::after,
 .button--loading::after {
     content: "";
     display: block;

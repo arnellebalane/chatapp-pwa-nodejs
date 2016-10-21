@@ -19,9 +19,14 @@ $('.message-form').on('submit', function(e) {
 
     const message = this.message.value.trim();
     if (message.length > 0) {
+        const formControls = $(this).find('input, .send-messsage-button');
+        formControls.prop('disabled', true);
+
         const url = this.action;
         const data = { message: message };
-        postDataToServer(url, data).then(response => this.message.value = '');
+        postDataToServer(url, data)
+            .then(response => this.message.value = '')
+            .then(_ => formControls.prop('disabled', false));
     }
 });
 

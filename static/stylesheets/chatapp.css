@@ -246,7 +246,6 @@ button {
 
 .message {
     display: flex;
-    padding-right: 200px;
     margin: 50px 0;
     opacity: 1;
     transform: translateY(0);
@@ -256,8 +255,10 @@ button {
 
 .message__avatar {
     flex-shrink: 0;
-    width: 55px;
-    height: 55px;
+    width: 10vw;
+    height: 10vw;
+    max-width: 55px;
+    max-height: 55px;
     margin-right: 25px;
     border-radius: 50%;
 }
@@ -269,14 +270,13 @@ button {
 
 
 .message__author {
-    line-height: 55px;
+    font-size: 1.25em;
+    line-height: 10vw;
 }
 
 
 .message--outgoing {
     justify-content: flex-end;
-    padding-left: 200px;
-    padding-right: 0;
 }
 
 
@@ -295,4 +295,24 @@ button {
 .message--entering {
     opacity: 0;
     transform: translateY(-50%);
+}
+
+
+@media (min-device-width: 550px), (min-width: 550px) {
+    .message__author {
+        line-height: 55px;
+    }
+}
+
+
+@media (min-device-width: 768px), (min-width: 768px) {
+    .message {
+        padding-right: 200px;
+    }
+
+
+    .message--outgoing {
+        padding-left: 200px;
+        padding-right: 0;
+    }
 }

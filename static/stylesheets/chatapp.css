@@ -142,13 +142,26 @@ button {
 .message-layer {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    overflow: auto;
 }
 
 
 .message-layer .app-header {
-    margin-bottom: -150px;
+    margin-bottom: 0;
+}
+
+
+@media (min-device-height: 600px), (min-height: 600px) {
+    .message-layer {
+        justify-content: center;
+    }
+
+
+    .message-layer .app-header {
+        margin-bottom: -150px;
+    }
 }
 
 

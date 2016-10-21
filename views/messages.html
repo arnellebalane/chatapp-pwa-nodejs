@@ -28,7 +28,7 @@
 
         <template id="message">
             {% raw %}
-            <li class="message {{#outgoing}}message--outgoing{{/outgoing}}">
+            <li class="message {{#outgoing}}message--outgoing{{/outgoing}}" data-when="{{when}}">
                 <img class="message__avatar" src="{{author.avatar}}" alt="{{author.name}}">
                 <div class="message__details">
                     <h2 class="message__author">{{author.name}}</h2>

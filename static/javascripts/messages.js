@@ -22,10 +22,26 @@ const retrieveMessages = _ => {
 
 
 const renderMessage = (message) => {
+    if ($.contains(messagesContainer, `[data-when="${message.when}"]`)) {
+        return false;
+    }
+
     const renderedMessage = $(messageTemplate(message));
     renderedMessage.addClass('message--entering');
 
-    messagesContainer.prepend(renderedMessage);
+    if (messagesContainer.is(':empty')) {
+        messagesContainer.append(renderedMessage);
+    } else {
+        var previous = messagesContainer.children().filter((i, child) => {
+            const when = parseInt(child.dataset.when);
+            return when < message.when;
+        }).first();
+        if (previous.length === 0) {
+            messagesContainer.append(renderedMessage);
+        } else {
+            previous.before(renderedMessage);
+        }
+    }
     setTimeout(_ => renderedMessage.removeClass('message--entering'), 0);
 };
 

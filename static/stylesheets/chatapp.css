@@ -246,7 +246,7 @@ button {
 
 .message {
     display: flex;
-    margin: 50px 0;
+    margin: 25px 0;
     opacity: 1;
     transform: translateY(0);
     transition: all 250ms ease;
@@ -259,7 +259,7 @@ button {
     height: 10vw;
     max-width: 55px;
     max-height: 55px;
-    margin-right: 25px;
+    margin-right: 15px;
     border-radius: 50%;
 }
 
@@ -282,7 +282,7 @@ button {
 
 .message--outgoing .message__avatar {
     order: 1;
-    margin-left: 25px;
+    margin-left: 15px;
     margin-right: 0;
 }
 
@@ -308,11 +308,22 @@ button {
 @media (min-device-width: 768px), (min-width: 768px) {
     .message {
         padding-right: 200px;
+        margin: 50px 0;
     }
 
 
     .message--outgoing {
         padding-left: 200px;
         padding-right: 0;
+    }
+
+
+    .message__avatar {
+        margin-right: 25px;
+    }
+
+
+    .message--outgoing .message__avatar {
+        margin-left: 25px;
     }
 }

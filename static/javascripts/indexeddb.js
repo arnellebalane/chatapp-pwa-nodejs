@@ -9,8 +9,7 @@ const indb = idb.open('chatapp-pwa', 1, upgrade => {
 
 const insertObjectToIndexedDb = (store, object) => {
     return indb.then(db => {
-        const transaction = db.transaction(store, 'readwrite');
-        transaction.objectStore(store).put(object);
-        return transaction.complete;
+        return db.transaction(store, 'readwrite')
+            .objectStore(store).put(object);
     });
 };

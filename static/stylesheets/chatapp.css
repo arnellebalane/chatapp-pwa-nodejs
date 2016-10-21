@@ -195,6 +195,23 @@ button {
 }
 
 
+.message-form__actions .button {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 5px auto;
+}
+
+
+@media (min-device-width: 768px), (min-width: 768px) {
+    .message-form__actions .button {
+        width: auto;
+        display: inline-block;
+        margin: 5px;
+    }
+}
+
+
 
 /** messages layer styles **/
 

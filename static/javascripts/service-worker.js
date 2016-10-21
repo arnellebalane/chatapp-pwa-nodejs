@@ -15,7 +15,7 @@ self.addEventListener('sync', e => {
                                 'Content-Type': 'application/json',
                                 'Authorization': `Bearer ${jwtoken}`
                             },
-                            body: JSON.stringify({ message: message })
+                            body: JSON.stringify({ message: message.message })
                         })
                         .then(response => response.json())
                         .then(response => deleteObjectFromIndexedDb('messages', message.id));

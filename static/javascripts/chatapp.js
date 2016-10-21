@@ -26,7 +26,8 @@ $('.message-form').on('submit', function(e) {
         const data = { message: message };
         postDataToServer(url, data)
             .then(response => this.message.value = '')
-            .then(_ => formControls.prop('disabled', false));
+            .then(_ => formControls.prop('disabled', false))
+            .then(_ => toast('Message sent!'));
     }
 });
 
@@ -66,4 +67,15 @@ const postDataToServer = (url, data) => {
         },
         body: JSON.stringify(data)
     }).then(response => response.json());
+};
+
+
+const toastElement = $('.toast');
+let toastTimer = null;
+
+const toast = message => {
+    toastElement.text(message).removeClass('toast--hidden');
+
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(_ => toastElement.addClass('toast--hidden'), 2000);
 };

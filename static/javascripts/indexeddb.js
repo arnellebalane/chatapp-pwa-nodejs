@@ -21,3 +21,11 @@ const retrieveObjectsFromIndexedDb = store => {
         return db.transaction(store).objectStore(store).getAll();
     });
 };
+
+
+const deleteObjectFromIndexedDb = (store, key) => {
+    return indb.then(db => {
+        return db.transaction(store, 'readwrite')
+            .objectStore(store).delete(key);
+    });
+};

@@ -3,6 +3,27 @@ importScripts('/static/vendor/idb-keyval/idb-keyval.js');
 importScripts('/static/javascripts/indexeddb.js');
 
 
+self.addEventListener('push', e => {
+    if (e.data) {
+        const data = e.data.json();
+        var notificationTitle = data.user.name;
+        var notificationOptions = {
+            body: data.message.content,
+            icon: data.user.avatar
+        };
+    } else {
+        var notificationTitle = 'You received a new message';
+        var notificationOptions = {
+            body: 'Tap to view in messages',
+            icon: '/static/images/chatapp.png'
+        };
+    }
+    e.waitUntil(
+        self.registration.showNotification(notificationTitle, notificationOptions)
+    );
+});
+
+
 self.addEventListener('sync', e => {
     if (e.tag === 'send-message') {
         e.waitUntil(

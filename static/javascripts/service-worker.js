@@ -24,6 +24,12 @@ self.addEventListener('push', e => {
 });
 
 
+self.addEventListener('notificationclick', e => {
+    e.notification.close();
+    e.waitUntil(self.clients.openWindow('/messages'));
+});
+
+
 self.addEventListener('sync', e => {
     if (e.tag === 'send-message') {
         e.waitUntil(

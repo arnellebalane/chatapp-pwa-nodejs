@@ -6,6 +6,7 @@ importScripts('/static/javascripts/indexeddb.js');
 const cacheName = 'cache-v1';
 const urlsToCache = [
     '/',
+    '/offline',
     '/static/stylesheets/fonts.css',
     '/static/stylesheets/components.css',
     '/static/stylesheets/chatapp.css',
@@ -53,7 +54,11 @@ self.addEventListener('fetch', e => {
             if (response) {
                 return response;
             }
-            return fetch(e.request);
+            return fetch(e.request).catch(error => {
+                if (e.request.mode === 'navigate') {
+                    return caches.match('/offline');
+                }
+            });
         })
     );
 });

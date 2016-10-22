@@ -47,6 +47,18 @@ self.addEventListener('activate', e => {
 });
 
 
+self.addEventListener('fetch', e => {
+    e.respondWith(
+        caches.match(e.request).then(response => {
+            if (response) {
+                return response;
+            }
+            return fetch(e.request);
+        })
+    );
+});
+
+
 self.addEventListener('push', e => {
     if (e.data) {
         const data = e.data.json();

@@ -3,6 +3,50 @@ importScripts('/static/vendor/idb-keyval/idb-keyval.js');
 importScripts('/static/javascripts/indexeddb.js');
 
 
+const cacheName = 'cache-v1';
+const urlsToCache = [
+    '/',
+    '/static/stylesheets/fonts.css',
+    '/static/stylesheets/components.css',
+    '/static/stylesheets/chatapp.css',
+    '/static/vendor/jquery/dist/jquery.min.js',
+    '/static/vendor/idb/lib/idb.js',
+    '/static/vendor/idb-keyval/idb-keyval.js',
+    '/static/javascripts/utils.js',
+    '/static/javascripts/indexeddb.js',
+    '/static/javascripts/chatapp.js',
+    '/static/javascripts/authentication.js',
+    '/static/javascripts/sw-register.js',
+    '/static/fonts/quicksand/regular.woff2',
+    '/static/fonts/quicksand/bold.woff2',
+    '/static/images/logout.png'
+];
+
+
+self.addEventListener('install', e => {
+    e.waitUntil(
+        caches.open(cacheName).then(cache => {
+            return cache.addAll(urlsToCache)
+        }).then(_ => {
+            console.log(`Caching complete for "${cacheName}"`);
+        })
+    );
+});
+
+
+self.addEventListener('activate', e => {
+    e.waitUntil(
+        caches.keys().then(cacheKeys => {
+            return Promise.all(cacheKeys.map(cacheKey => {
+                if (cacheKey !== cacheName) {
+                    return caches.delete(cacheKey);
+                }
+            }));
+        })
+    );
+});
+
+
 self.addEventListener('push', e => {
     if (e.data) {
         const data = e.data.json();

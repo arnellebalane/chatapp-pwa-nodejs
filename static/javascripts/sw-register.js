@@ -65,8 +65,10 @@ const subscribeToPushNotifications = registration => {
 const unsubscribeFromPushNotifications = subscription => {
     subscriptionButton.prop('disabled', true);
     return subscription.unsubscribe().then(_ => {
-        toast('You are now unsubscribed from push notifications!');
-        subscriptionButton.text('Subscribe to Push Notifications');
-        subscriptionButton.prop('disabled', false);
+        return postDataToServer('/unsubscribe', {}).then(_ => {
+            toast('You are now unsubscribed from push notifications!');
+            subscriptionButton.text('Subscribe to Push Notifications');
+            subscriptionButton.prop('disabled', false);
+        });
     });
 }

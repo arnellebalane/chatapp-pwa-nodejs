@@ -28,4 +28,44 @@ const initializeProgressiveWebApp = registration => {
         }
     });
 
+    registration.pushManager.getSubscription().then(subscription => {
+        if (subscription) {
+            subscriptionButton.text('Unsubscribe from Push Notifications');
+        }
+    });
+
+
+    subscriptionButton.on('click', _ => {
+        registration.pushManager.getSubscription().then(subscription => {
+            if (subscription) {
+                return unsubscribeFromPushNotifications(subscription);
+            }
+            return subscribeToPushNotifications(registration);
+        });
+    });
+
 };
+
+
+const subscriptionButton = $('.subscription-button');
+
+
+const subscribeToPushNotifications = registration => {
+    subscriptionButton.prop('disabled', true);
+    return registration.pushManager.subscribe({ userVisibleOnly: true }).then(subscription => {
+        console.log(subscription);
+        toast('You are now subscribed to push notifications!');
+        subscriptionButton.text('Unsubscribe from Push Notifications');
+        subscriptionButton.prop('disabled', false);
+    });
+};
+
+
+const unsubscribeFromPushNotifications = subscription => {
+    subscriptionButton.prop('disabled', true);
+    return subscription.unsubscribe().then(_ => {
+        toast('You are now unsubscribed from push notifications!');
+        subscriptionButton.text('Subscribe to Push Notifications');
+        subscriptionButton.prop('disabled', false);
+    });
+}

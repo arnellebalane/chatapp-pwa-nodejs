@@ -9,7 +9,10 @@ self.addEventListener('push', e => {
         var notificationTitle = data.user.name;
         var notificationOptions = {
             body: data.message.content,
-            icon: data.user.avatar
+            icon: data.user.avatar,
+            data: {
+                redirectUrl: '/messages'
+            }
         };
     } else {
         var notificationTitle = 'You received a new message';
@@ -29,10 +32,10 @@ self.addEventListener('notificationclick', e => {
     e.waitUntil(
         self.clients.matchAll({ type: 'window' }).then(clients => {
             if (clients.length > 0) {
-                clients[0].navigate('/messages');
+                clients[0].navigate(e.notification.data.redirectUrl);
                 clients[0].focus();
             } else {
-                self.clients.openWindow('/messages');
+                self.clients.openWindow(e.notification.data.redirectUrl);
             }
         })
     );

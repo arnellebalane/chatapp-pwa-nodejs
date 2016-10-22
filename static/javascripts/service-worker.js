@@ -26,7 +26,16 @@ self.addEventListener('push', e => {
 
 self.addEventListener('notificationclick', e => {
     e.notification.close();
-    e.waitUntil(self.clients.openWindow('/messages'));
+    e.waitUntil(
+        self.clients.matchAll({ type: 'window' }).then(clients => {
+            if (clients.length > 0) {
+                clients[0].navigate('/messages');
+                clients[0].focus();
+            } else {
+                self.clients.openWindow('/messages');
+            }
+        })
+    );
 });
 
 

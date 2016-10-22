@@ -53,10 +53,11 @@ const subscriptionButton = $('.subscription-button');
 const subscribeToPushNotifications = registration => {
     subscriptionButton.prop('disabled', true);
     return registration.pushManager.subscribe({ userVisibleOnly: true }).then(subscription => {
-        console.log(subscription);
-        toast('You are now subscribed to push notifications!');
-        subscriptionButton.text('Unsubscribe from Push Notifications');
-        subscriptionButton.prop('disabled', false);
+        return postDataToServer('/subscribe', subscription.toJSON()).then(_ => {
+            toast('You are now subscribed to push notifications!');
+            subscriptionButton.text('Unsubscribe from Push Notifications');
+            subscriptionButton.prop('disabled', false);
+        });
     });
 };
 

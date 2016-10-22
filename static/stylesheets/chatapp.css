@@ -337,3 +337,21 @@ button {
         margin-left: 25px;
     }
 }
+
+
+
+/** offline layer styles **/
+
+.offline-layer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.offline__text {
+    margin-bottom: 25px;
+    font-size: 24px;
+    font-weight: normal;
+}

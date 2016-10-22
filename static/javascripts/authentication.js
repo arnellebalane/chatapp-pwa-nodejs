@@ -5,13 +5,15 @@ idbKeyval.get('jwtoken').then(value => {
 });
 
 
-// dynamically load the Google platform library
-const script = document.createElement('script');
-script.src = 'https://apis.google.com/js/platform.js';
-script.async = true;
-script.defer = true;
-script.onerror = error => console.warn(error);
-document.body.appendChild(script);
+if (navigator.onLine) {
+    // dynamically load the Google platform library
+    const script = document.createElement('script');
+    script.src = 'https://apis.google.com/js/platform.js';
+    script.async = true;
+    script.defer = true;
+    script.onerror = error => console.warn(error);
+    document.body.appendChild(script);
+}
 
 
 /**
